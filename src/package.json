@@ -1,0 +1,28 @@
+{
+  "name": "@angular/ngrxcrosstabcommunication",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nickwinger/ngRxCrossTabCommunication"
+  },
+  "author": {
+    "name": "Nick Winger",
+    "email": "nick@bit4bit.at"
+  },
+  "keywords": [
+    "angular crosstab communication rxjs"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nickwinger/ngRxCrossTabCommunication/issues"
+  },
+  "main": "ngrxcrosstabcommunication.umd.js",
+  "module": "ngrxcrosstabcommunication.js",
+  "jsnext:main": "ngrxcrosstabcommunication.js",
+  "typings": "ngrxcrosstabcommunication.d.ts",
+  "peerDependencies": {
+    "@angular/core": "^4.0.0",
+    "rxjs": "^5.1.0",
+    "zone.js": "^0.8.4"
+  }
+}
