@@ -22,7 +22,7 @@
     "strictMetadataEmit": true,
     "skipTemplateCodegen": true,
     "flatModuleOutFile": "ngrxcrosstabcommunication.js",
-    "flatModuleId": "@angular/ngrxcrosstabcommunication"
+    "flatModuleId": "ngrxcrosstabcommunication"
   },
   "files": [
     "./index.ts"

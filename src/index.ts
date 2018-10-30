@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import {NgModule, ModuleWithProviders, SkipSelf, Optional} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CrossTabService } from './crossTab.service';
 
@@ -11,10 +11,20 @@ export * from './crossTab.service';
   declarations: [
   ],
   exports: [
+  ],
+  providers: [
+      CrossTabService
   ]
 })
 export class NgRxCrossTabCommunicationModule {
-  static forRoot(): ModuleWithProviders {
+    constructor(@Optional() @SkipSelf() parentModule: NgRxCrossTabCommunicationModule) {
+        if (parentModule) {
+            throw new Error(
+                'NgRxCrossTabCommunicationModule is already loaded. Import it in the (root) AppModule only');
+        }
+    }
+
+    static forRoot(): ModuleWithProviders {
     return {
       ngModule: NgRxCrossTabCommunicationModule,
       providers: [CrossTabService]
