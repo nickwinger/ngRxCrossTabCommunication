@@ -8,24 +8,17 @@ To install this library, run:
 $ npm install @angular/ngrxcrosstabcommunication --save
 ```
 
-## Consuming your library
+## Including in angular
 
-Once you have published your library to npm, you can import your library in any Angular application by running:
-
-```bash
-$ npm install @angular/ngrxcrosstabcommunication
-```
-
-and then from your Angular `AppModule`:
+inside your Angular-Module:
 
 ```typescript
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 
-// Import your library
-import { SampleModule } from '@angular/ngrxcrosstabcommunication';
+// Import CrossTabCommunication library
+import { NgRxCrossTabCommunicationModule } from '@angular/ngrxcrosstabcommunication';
 
 @NgModule({
   declarations: [
@@ -33,9 +26,8 @@ import { SampleModule } from '@angular/ngrxcrosstabcommunication';
   ],
   imports: [
     BrowserModule,
-
-    // Specify your library as an import
-    LibraryModule
+    
+    NgRxCrossTabCommunicationModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -43,28 +35,22 @@ import { SampleModule } from '@angular/ngrxcrosstabcommunication';
 export class AppModule { }
 ```
 
-Once your library is imported, you can use its components, directives and pipes in your Angular application:
+Once the library is imported, you can use the service like this:
 
-```xml
-<!-- You can now use your library component in app.component.html -->
-<h1>
-  {{title}}
-</h1>
-<sampleComponent></sampleComponent>
-```
+```typescript
+import {Component} from '@angular/core';
+import { CrossTabService } from '@angular/ngrxcrosstabcommunication';
 
-## Development
-
-To generate all `*.js`, `*.d.ts` and `*.metadata.json` files:
-
-```bash
-$ npm run build
-```
-
-To lint all `*.ts` files:
-
-```bash
-$ npm run lint
+@Component() {}
+export class MyComponent {
+    constructor(crossTabService: CrossTabService) {
+        crossTabService.messages.subscribe(msg => {
+           console.log('Received message: ' + msg.message); 
+        });
+        
+        crossTabService.sendMessage({ message: 'Test message', data: {foo: 'bar'}});
+    }
+}
 ```
 
 ## License
